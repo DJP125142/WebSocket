@@ -41,7 +41,7 @@ function memfree($connect, $param){
 //        if(true !== _connectServer($connect, $param['ip'], $param['ssh_username'], $param['ssh_password'])){
 //            return;
 //        }
-//    }
+//    } 
     //exec('vm_stat');//在MAC下获取空闲内存
     $cmd = 'cat /proc/meminfo | grep "MemFree:"';
     $connect->business['timer_id'] = \MeepoPS\Core\Timer::add('_execCmd', array($connect, $cmd), $param['interval']);
