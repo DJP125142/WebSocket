@@ -37,11 +37,11 @@ function callbackNewData($connect, $data){
  */
 function memfree($connect, $param){
     //通过账号密码连接远端服务器，如果连接本机服务器可以注释
-//    if(empty($connect->business['ssh']) || !is_resource($connect->business['ssh'])){
-//        if(true !== _connectServer($connect, $param['ip'], $param['ssh_username'], $param['ssh_password'])){
-//            return;
-//        }
-//    }
+    if(empty($connect->business['ssh']) || !is_resource($connect->business['ssh'])){
+        if(true !== _connectServer($connect, $param['ip'], $param['ssh_username'], $param['ssh_password'])){
+            return;
+        }
+    }
     //exec('vm_stat');//在MAC下获取空闲内存
     $cmd = 'cat /proc/meminfo | grep "MemFree:"';
     $connect->business['timer_id'] = \MeepoPS\Core\Timer::add('_execCmd', array($connect, $cmd), $param['interval']);
